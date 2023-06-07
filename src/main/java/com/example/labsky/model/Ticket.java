@@ -12,9 +12,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToOne(mappedBy = "cpf",cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Passageiro passageiro;
+    private String cpf;
 
     private String assento;
 }

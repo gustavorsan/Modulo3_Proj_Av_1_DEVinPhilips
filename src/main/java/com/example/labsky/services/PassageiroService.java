@@ -22,7 +22,7 @@ public class PassageiroService {
 
     public Passageiro buscarCpf (String cpf) throws Exception{
         String novoCpf = StringUtils.formataCpf(cpf.replaceAll("[^0-9]+",""));
-        Optional<Passageiro> passageiro = passageiroRepository.findById(cpf);
+        Optional<Passageiro> passageiro = passageiroRepository.findById(novoCpf);
         if (passageiro.isPresent()){
             return passageiro.get();
         }
@@ -31,7 +31,6 @@ public class PassageiroService {
     }
 
     public void atualizarMilhas(String cpf){
-        String novoCpf = StringUtils.formataCpf(cpf.replaceAll("[^0-9]+",""));
         Optional<Passageiro> passageiro = passageiroRepository.findById(cpf);
 
         int milhas = passageiro.get().getMilhas();
