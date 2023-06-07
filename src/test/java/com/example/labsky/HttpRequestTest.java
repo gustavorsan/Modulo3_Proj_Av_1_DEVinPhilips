@@ -18,11 +18,5 @@ import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 public class HttpRequestTest {
     List<Passageiro> passageiros = new ArrayList<>();
 
-    Mockito
 
-
-    public void shouldListPassageiros() throws Exception{
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                Passageiro.class)).contains(List< Passageiro >);)
-    }
 }
