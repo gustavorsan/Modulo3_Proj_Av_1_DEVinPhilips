@@ -21,13 +21,16 @@ public class PassageiroService {
     }
 
     public Passageiro buscarCpf (String cpf) throws Exception{
-        String novoCpf = StringUtils.formataCpf(cpf.replaceAll("[^0-9]+",""));
-        Optional<Passageiro> passageiro = passageiroRepository.findById(novoCpf);
-        if (passageiro.isPresent()){
-            return passageiro.get();
-        }
+        String novoCpf = cpf.replaceAll("[^0-9]+","");
 
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
+        if(novoCpf.length() == 11){
+            novoCpf = StringUtils.formataCpf(novoCpf);
+            Optional<Passageiro> passageiro = passageiroRepository.findById(novoCpf);
+            if (passageiro.isPresent()){
+                return passageiro.get();
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Passageiro não localizado\n");
     }
 
     public void atualizarMilhas(String cpf){

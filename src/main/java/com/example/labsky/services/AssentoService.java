@@ -1,7 +1,5 @@
 package com.example.labsky.services;
 
-import com.example.labsky.Repository.AssentoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,9 +7,6 @@ import java.util.List;
 
 @Service
 public class AssentoService {
-
-    @Autowired
-    private AssentoRepository assentoRepository;
 
     public List<String> obterAssentos(){
         String letras = "ABCDEF";
@@ -24,6 +19,13 @@ public class AssentoService {
         }
 
         return  lista;
+    }
+
+    public boolean assentoValido(String assento){
+        List<String> lista = new ArrayList<>();
+        lista.addAll(obterAssentos());
+
+        return lista.contains(assento);
     }
 
 }

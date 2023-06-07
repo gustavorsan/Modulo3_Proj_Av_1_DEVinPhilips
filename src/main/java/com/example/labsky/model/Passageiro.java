@@ -18,4 +18,6 @@ public class Passageiro {
     private LocalDate dataNascimento;
     private String classificacao;
     private Integer milhas;
+
+    private int idade;
 }
